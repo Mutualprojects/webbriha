@@ -33,7 +33,7 @@ export function NavigationMenuDemo() {
 
   // Logos
   const blueLogo = "/highbtlogo-tm-1.png" // for white background
-  const whiteLogo = "/highbtlogo white- tm.png" // for blue background
+  const whiteLogo = "/highbtlogo-white-tm.png" // for blue background
 
   return (
     <header
