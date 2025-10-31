@@ -1,14 +1,23 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 import Image from "next/image";
 
+// ====== Motion Variant (TypeScript-safe) ======
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ replaces "easeOut" safely
+    },
+  },
 };
 
+// ====== Component ======
 export default function BlogsInsights() {
   const blogs = [
     {
@@ -48,7 +57,7 @@ export default function BlogsInsights() {
           variants={fadeUp}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           className="flex flex-col md:flex-row md:items-end md:justify-between mb-12"
         >
           <div>
@@ -62,9 +71,11 @@ export default function BlogsInsights() {
           </div>
           <p className="text-gray-600 mt-4 md:mt-0 max-w-xl">
             Stay updated with the latest in{" "}
-            <span className="text-[#07518a] font-medium">solar innovation</span>,{" "}
-            India’s renewable energy policies, case studies, and practical tips
-            for optimizing your energy systems.
+            <span className="text-[#07518a] font-medium">
+              solar innovation
+            </span>
+            , India’s renewable energy policies, case studies, and practical
+            tips for optimizing your energy systems.
           </p>
         </motion.div>
 
@@ -76,7 +87,7 @@ export default function BlogsInsights() {
               variants={fadeUp}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300"
             >
               <div className="relative w-full h-64">
@@ -84,6 +95,7 @@ export default function BlogsInsights() {
                   src={blog.image}
                   alt={blog.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover"
                 />
               </div>
