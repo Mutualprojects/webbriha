@@ -1,18 +1,28 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 import Image from "next/image";
 
 // ====== Motion Variants ======
 const fadeInUp = {
-  hidden: { opacity: 0, y: 200},
-  show: { opacity: 1, y: -50, transition: { duration: 0.8, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 200 },
+  show: {
+    opacity: 1,
+    y: -50,
+    transition: {
+      duration: 0.8,
+      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ replaces "easeOut"
+    },
+  },
 };
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.8 } },
+  show: {
+    opacity: 1,
+    transition: { duration: 0.8, ease: cubicBezier(0.16, 1, 0.3, 1) },
+  },
 };
 
 // ====== Component ======
@@ -30,10 +40,11 @@ export default function WhoWeAre() {
           className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-lg"
         >
           <Image
-            src="/who-we-are.jpg" // 🖼️ Replace with your image path
+            src="/who-we-are.jpg"
             alt="Who we are"
             fill
             className="object-cover"
+            priority
           />
         </motion.div>
 
@@ -49,11 +60,11 @@ export default function WhoWeAre() {
             Who We Are
           </h2>
           <p className="text-gray-600 leading-relaxed text-lg">
-            We are a passionate team of renewable energy experts, engineers, and
-            visionaries united by the goal of delivering clean, dependable power
-            solutions across India. With over a decade of industry experience
-            and a commitment to innovation, Sky Volts stands for quality,
-            transparency, and customer satisfaction.
+            We are a passionate team of renewable energy experts, engineers,
+            and visionaries united by the goal of delivering clean, dependable
+            power solutions across India. With over a decade of industry
+            experience and a commitment to innovation, Sky Volts stands for
+            quality, transparency, and customer satisfaction.
           </p>
         </motion.div>
       </div>
@@ -80,7 +91,6 @@ export default function WhoWeAre() {
             className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center space-y-4 hover:shadow-xl transition"
           >
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
-              {/* 🖼️ Dummy Icon */}
               <Image
                 src="/icons/sustainability.png"
                 alt="Sustainability"
