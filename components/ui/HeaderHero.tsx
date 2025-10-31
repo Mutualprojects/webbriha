@@ -1,19 +1,31 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  cubicBezier, // ✅ TS-safe easing function
+} from "framer-motion";
 
 /* ===== Framer Motion Variants ===== */
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ replaces "easeOut"
+    },
+  },
 };
 
 /* ===== HERO SECTION COMPONENT ===== */
 export default function HeaderHero() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Scroll-based motion for horizontal text animation
+  // Scroll-based horizontal animation
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -27,7 +39,7 @@ export default function HeaderHero() {
       ref={sectionRef}
       className="relative w-full overflow-hidden"
     >
-      {/* ===== Background Layers (same as your version) ===== */}
+      {/* ===== Background Layers ===== */}
       <div className="absolute inset-0">
         {/* Background Image */}
         <div
@@ -39,10 +51,10 @@ export default function HeaderHero() {
           aria-hidden="true"
         />
 
-        {/* Strong blue color wash for text legibility */}
+        {/* Blue overlay for text readability */}
         <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(7,81,138,0.92),rgba(10,108,182,0.78))]" />
 
-        {/* Smooth fade to white background (bottom edge) */}
+        {/* Fade to white bottom gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 lg:h-24 bg-gradient-to-t from-white via-white/70 to-transparent" />
       </div>
 
@@ -59,17 +71,16 @@ export default function HeaderHero() {
               className="text-center lg:text-left text-white"
             >
               <span className="inline-block text-xs font-semibold uppercase tracking-wider text-yellow-300 bg-white/10 rounded-full px-4 py-2 mb-5 shadow-sm">
-             Transforming India’s Energy Landscape
+                Transforming India’s Energy Landscape
               </span>
 
               <h1 className="text-3xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-snug">
-              Powering Homes, Industries & Institutions with Smart Solar Solutions
-
+                Powering Homes, Industries & Institutions with Smart Solar
+                Solutions
               </h1>
 
               <p className="mt-5 text-base sm:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto lg:mx-0">
-               “Empowering Progress. Energizing the Future.”
-
+                “Empowering Progress. Energizing the Future.”
               </p>
 
               {/* CTA Buttons */}
@@ -93,11 +104,14 @@ export default function HeaderHero() {
               </div>
             </motion.div>
 
-            {/* ===== Right Visual Section (Responsive Image Block) ===== */}
+            {/* ===== Right Visual Section ===== */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{
+                duration: 0.8,
+                ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ TS-safe easing
+              }}
               className="relative flex justify-center lg:justify-end mt-10 lg:mt-0"
             >
               <div
@@ -114,19 +128,25 @@ export default function HeaderHero() {
                   className="w-full h-full object-cover rounded-3xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: cubicBezier(0.16, 1, 0.3, 1),
+                  }}
                 />
               </div>
             </motion.div>
           </div>
         </div>
 
-        {/* ===== Optional Bottom Strip (for KPIs / future stats) ===== */}
+        {/* ===== Optional Bottom Strip ===== */}
         <div className="relative -mt-6 sm:-mt-10 lg:-mt-12 pb-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{
+              duration: 0.6,
+              ease: cubicBezier(0.16, 1, 0.3, 1),
+            }}
             className="mx-auto max-w-6xl text-center"
           >
             {/* Placeholder for future metric cards */}
