@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import Image, { StaticImageData } from "next/image";
+import { motion, cubicBezier } from "framer-motion";
 
+// ✅ Type updated to allow both imported and URL images
 interface Service {
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
 }
 
 interface Props {
@@ -15,12 +16,17 @@ interface Props {
   title?: string;
 }
 
+// ✅ TS-safe easing variant
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" },
+    transition: {
+      delay: i * 0.15,
+      duration: 0.6,
+      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ replaces "easeOut"
+    },
   }),
 };
 
@@ -32,6 +38,7 @@ export default function TrustedServices({
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-20 md:py-28 text-center bg-[#f5fbf7]">
+      {/* ===== Title ===== */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,6 +49,7 @@ export default function TrustedServices({
         {title}
       </motion.h2>
 
+      {/* ===== Services Grid ===== */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => (
           <motion.div
@@ -49,7 +57,7 @@ export default function TrustedServices({
             custom={i}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             variants={fadeUp}
             whileHover={{
               y: -10,
@@ -61,14 +69,18 @@ export default function TrustedServices({
             transition={{ type: "spring", stiffness: 200 }}
             className="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transform-gpu hover:shadow-xl transition-all"
           >
+            {/* ===== Image ===== */}
             <div className="relative w-full h-52 sm:h-56 overflow-hidden">
               <Image
                 src={service.image}
                 alt={service.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-500 hover:scale-110"
               />
             </div>
+
+            {/* ===== Text ===== */}
             <div className="p-6 sm:p-8">
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
                 {service.title}
