@@ -15,7 +15,7 @@ const roboto = Roboto({
 })
 
 export const metadata = {
-  title: 'Professional Next.js Website',
+  title: 'Skyvolt',
   description: 'Using Google Fonts with Next.js and Tailwind CSS',
 }
 
