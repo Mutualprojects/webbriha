@@ -1,47 +1,48 @@
-import Image from "next/image";
 import { NavigationMenuDemo } from "@/components/ui/NavigationMenuDemo";
 import Herosection from "@/components/ui/HeaderHero";
-import AboutSplitFullBleed from "@/components/AboutSplitFullBleed";
 import HomeSecondComp from "@/components/HomeSecondComp";
 import WhoWeAre from "@/components/WeAre";
 import Execuation from "@/components/Execuation";
 import BlogsInsights from "@/components/Blogs";
 import HoverFooter from "@/components/HoverFooter";
 
-
-
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Fixed Header */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-white shadow">
-        <NavigationMenuDemo />
-      </header>
+    <div className="bg-white m-0 p-0">
+      {/* ===== NAVBAR (fixed and over hero) ===== */}
+      <NavigationMenuDemo />
 
+      {/* ===== HERO SECTION ===== */}
+      <section className="relative w-full h-screen overflow-hidden m-0 p-0">
+        <Herosection />
+      </section>
 
+      {/* ===== MAIN CONTENT ===== */}
+      <main className="flex-1 bg-gray-50 m-0 p-0">
+        <section className="m-0 p-0 bg-gray-50">
+          <HomeSecondComp />
+        </section>
 
-      {/* Main content */}
-      <main className="flex-1 mt-20  bg-gray-50">
-        {/* mt-16 = height of the fixed header, adjust if header height changes */}
-        
+        <section className="m-0 p-0 bg-white">
+          <WhoWeAre />
+        </section>
 
+        <section className="m-0 p-0 bg-gray-50">
+          <Execuation />
+        </section>
 
+        <section className="m-0 p-0 bg-white">
+          <BlogsInsights />
+        </section>
 
-<div  className="h-100 bg-center bg-amber-50 px-0" style={{height:'88vh'}}>
-<Herosection/>
-<HomeSecondComp/>
-  <WhoWeAre/>
-  <Execuation/>
-  <BlogsInsights/>
-  <HoverFooter/>
-</div>
-       
+        {/* ===== CTA / Footer Section ===== */}
+        <section className="">
+          <HoverFooter />
+        </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center py-4">
-        © 2025 Your Company — All Rights Reserved
-      </footer>
+      {/* ===== SITE FOOTER ===== */}
+    
     </div>
   );
 }

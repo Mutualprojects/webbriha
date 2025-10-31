@@ -1,158 +1,188 @@
 "use client";
 
 import React, { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  cubicBezier, // ✅ TS-safe easing function
-} from "framer-motion";
+import { motion, useScroll, useTransform, cubicBezier } from "framer-motion";
 
-/* ===== Framer Motion Variants ===== */
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
+const videobg = "/Sequence01_1.mp4";
+
+/* ===== Motion Variants ===== */
+const containerVariants = {
+  hidden: {},
   show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ replaces "easeOut"
-    },
+    transition: { staggerChildren: 0.25, ease: cubicBezier(0.16, 1, 0.3, 1) },
   },
 };
 
-/* ===== HERO SECTION COMPONENT ===== */
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: cubicBezier(0.16, 1, 0.3, 1) },
+  },
+};
+
 export default function HeaderHero() {
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  // Scroll-based horizontal animation
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]); // Parallax zoom effect
 
   return (
     <header
       id="home"
       ref={sectionRef}
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden h-[100vh] flex items-center "
     >
-      {/* ===== Background Layers ===== */}
-      <div className="absolute inset-0">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://images.pexels.com/photos/9875441/pexels-photo-9875441.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop')",
-          }}
-          aria-hidden="true"
-        />
+      {/* ===== Background Video ===== */}
+      <motion.video
+        src={videobg}
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ scale }}
+      />
 
-        {/* Blue overlay for text readability */}
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(7,81,138,0.92),rgba(10,108,182,0.78))]" />
+      {/* ===== Overlay ===== */}
+      <div className="absolute inset-0 bg-white/15 backdrop-blur-[1px] px-0" />
 
-        {/* Fade to white bottom gradient */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-20 lg:h-24 bg-gradient-to-t from-white via-white/70 to-transparent" />
-      </div>
-
-      {/* ===== Main Hero Content ===== */}
-      <div className="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="pt-16 sm:pt-20 lg:pt-28 pb-10 sm:pb-16 lg:pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* ===== Left Text Content ===== */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              style={{ x }}
-              className="text-center lg:text-left text-white"
-            >
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-yellow-300 bg-white/10 rounded-full px-4 py-2 mb-5 shadow-sm">
-                Transforming India’s Energy Landscape
-              </span>
-
-              <h1 className="text-3xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold leading-snug">
-                Powering Homes, Industries & Institutions with Smart Solar
-                Solutions
-              </h1>
-
-              <p className="mt-5 text-base sm:text-lg lg:text-xl text-white/90 max-w-2xl mx-auto lg:mx-0">
-                “Empowering Progress. Energizing the Future.”
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#contact"
-                  className="bg-yellow-400 text-[#07518a] font-semibold px-6 py-3 rounded-full shadow-md hover:bg-yellow-300 transition-all duration-300"
-                >
-                  Get a Free Quote
-                </motion.a>
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="#learn-more"
-                  className="border border-white/80 text-white font-semibold px-6 py-3 rounded-full hover:bg-white/10 transition-all duration-300"
-                >
-                  Learn More
-                </motion.a>
-              </div>
-            </motion.div>
-
-            {/* ===== Right Visual Section ===== */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.8,
-                ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ TS-safe easing
-              }}
-              className="relative flex justify-center lg:justify-end mt-10 lg:mt-0"
-            >
-              <div
-                className="
-                  w-[90%] sm:w-[420px] md:w-[500px] lg:w-[560px] xl:w-[600px]
-                  h-[280px] sm:h-[360px] md:h-[420px] lg:h-[460px] xl:h-[480px]
-                  rounded-3xl overflow-hidden shadow-2xl
-                  border border-white/20 bg-white/5 backdrop-blur-sm
-                "
-              >
-                <motion.img
-                  src="https://images.pexels.com/photos/8853506/pexels-photo-8853506.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Solar panels on rooftop"
-                  className="w-full h-full object-cover rounded-3xl"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: cubicBezier(0.16, 1, 0.3, 1),
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* ===== Optional Bottom Strip ===== */}
-        <div className="relative -mt-6 sm:-mt-10 lg:-mt-12 pb-8">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              ease: cubicBezier(0.16, 1, 0.3, 1),
-            }}
-            className="mx-auto max-w-6xl text-center"
+      {/* ===== Hero Content ===== */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 w-full max-w-7xl mx-auto  sm:px-6 lg:px-0 flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-10 lg:gap-12"
+      >
+        {/* ===== Left Section (3/4) ===== */}
+        <motion.div
+          variants={fadeUp}
+          style={{ x }}
+          className="lg:w-3/4 w-full text-center lg:text-left text-gray-900 space-y-4 sm:space-y-5 px-0"
+        >
+          <motion.span
+            variants={fadeUp}
+            className="text-green-600 font-bold text-lg sm:text-xl md:text-2xl"
           >
-            {/* Placeholder for future metric cards */}
+            Transforming India’s Energy Landscape
+          </motion.span>
+
+          <motion.h1
+            variants={fadeUp}
+            className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-snug sm:leading-tight text-[#2469AD]"
+          >
+            Powering Homes, Industries & Institutions
+          
+            with Smart Solar Solutions
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            className="text-base sm:text-lg md:text-xl text-black max-w-3xl mx-auto lg:mx-0 leading-relaxed"
+          >
+            “Empowering Progress. Energizing the Future.”
+          </motion.p> 
+
+          {/* ===== CTA Buttons ===== */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4"
+          >
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="#contact"
+              className="bg-[#FCC012] text-[#2469AD] font-semibold px-5 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-all duration-300 text-sm sm:text-base"
+            >
+              Get a Free Quote
+            </motion.a>
           </motion.div>
-        </div>
-      </div>
+        </motion.div>
+
+        {/* ===== Right Section (1/4) ===== */}
+      {/* ===== Right Section (Text top + Smaller Image bottom) ===== */}
+<motion.div
+  variants={fadeUp}
+  className="lg:w-1/4 w-full sm:w-[70%] md:w-[55%] lg:w-[40%] 
+             flex justify-center lg:mt-80 sm:mt-20"
+>
+  {/* Card Wrapper */}
+  <motion.div
+    whileHover={{ scale: 1.03 }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    className="relative w-[80%] sm:w-[85%] md:w-[70%] lg:w-[80%]
+               bg-white rounded-3xl shadow-[0_6px_20px_rgba(0,0,0,0.25)]
+               border border-blue-500/30 overflow-hidden flex flex-col 
+               items-center text-center p-4 sm:p-5 gap-4"
+  >
+    {/* ===== Image Top ===== */}
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative w-full h-[140px] sm:h-[160px] md:h-[180px] lg:h-[200px]
+                 rounded-2xl overflow-hidden border border-green-700/20"
+    >
+      <motion.img
+        src="https://images.pexels.com/photos/8853506/pexels-photo-8853506.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        alt="Eco energy panels"
+        className="w-full h-full object-cover rounded-2xl"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: cubicBezier(0.16, 1, 0.3, 1) }}
+      />
+
+      {/* Blue Arrow Button */}
+      <motion.a
+        href="/solutions"
+        whileHover={{ scale: 1.15, x: 2 }}
+        className="absolute bottom-3 right-3 bg-blue-600 hover:bg-blue-700 
+                   text-white rounded-full p-3 shadow-lg transition-all duration-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          stroke="currentColor"
+          className="w-5 h-5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+          />
+        </svg>
+      </motion.a>
+    </motion.div>
+
+    {/* ===== Content Below ===== */}
+    <motion.div
+      variants={fadeUp}
+      className="space-y-2 px-2 sm:px-3"
+    >
+      <motion.h3
+        variants={fadeUp}
+        className="text-[15px] sm:text-[16px] font-semibold text-green-700"
+      >
+        Eco-friendly solutions for your future
+      </motion.h3>
+      <motion.p
+        variants={fadeUp}
+        className="text-xs sm:text-sm text-gray-700 leading-relaxed"
+      >
+        Harness the power of nature — sun, wind, and water — for sustainable growth.
+      </motion.p>
+    </motion.div>
+  </motion.div>
+</motion.div>
+
+
+      </motion.div>
     </header>
   );
 }

@@ -198,7 +198,7 @@ export default function HoverFooter() {
                 Sky Volts
               </span>
             </div>
-            <p className="text-sm leading-relaxed text-gray-200">
+            <p className="text-sm leading-relaxed text-[#07518a]">
               Delivering clean, dependable, and innovative solar power solutions
               for a sustainable tomorrow.
             </p>
@@ -254,6 +254,10 @@ export default function HoverFooter() {
             </ul>
           </div>
         </div>
+         {/* Hover text effect */}
+      <div className="hidden lg:flex h-[30rem] -mt-52 -mb-36">
+        <TextHoverEffect text="SkyVolts" />
+      </div>
 
         <hr className="border-t border-gray-700 my-8" />
 
@@ -279,10 +283,7 @@ export default function HoverFooter() {
         </div>
       </div>
 
-      {/* Hover text effect */}
-      <div className="hidden lg:flex h-[30rem] -mt-52 -mb-36">
-        <TextHoverEffect text="SkyVolts" />
-      </div>
+     
 
       <FooterBackgroundGradient />
     </footer>

@@ -4,7 +4,7 @@ import React from "react";
 import { motion, cubicBezier } from "framer-motion";
 import Image from "next/image";
 
-/* ====== Safe Framer Motion variant ====== */
+/* ===== Base fade-up variant for headings / image ===== */
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   show: {
@@ -12,9 +12,23 @@ const fadeUp = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ TS-safe easing
+      ease: cubicBezier(0.16, 1, 0.3, 1),
     },
   },
+};
+
+/* ===== Step-by-step reveal animation ===== */
+const stepReveal = {
+  hidden: { opacity: 0, y: 30 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.25, // each step staggers slightly
+      duration: 0.7,
+      ease: cubicBezier(0.16, 1, 0.3, 1),
+    },
+  }),
 };
 
 export default function Execution() {
@@ -70,18 +84,33 @@ export default function Execution() {
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                variants={fadeUp}
+                custom={index}
+                variants={stepReveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
                 className="flex items-start space-x-5"
               >
-                <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-full bg-[#07518a] flex items-center justify-center text-white font-bold">
+                {/* Number circle + vertical line */}
+                <motion.div
+                  className="flex flex-col items-center"
+                  initial={{ scale: 0.6, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{
+                    delay: index * 0.25,
+                    duration: 0.5,
+                    ease: "easeOut",
+                  }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-[#07518a] flex items-center justify-center text-white font-bold text-lg shadow-md">
                     {step.number}
                   </div>
                   {index < steps.length - 1 && (
                     <div className="w-px h-10 bg-gray-300 mt-1"></div>
                   )}
-                </div>
+                </motion.div>
 
+                {/* Step text */}
                 <div>
                   <h3 className="text-lg font-semibold text-gray-800">
                     {step.title}

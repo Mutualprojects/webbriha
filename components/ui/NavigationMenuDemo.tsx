@@ -61,7 +61,7 @@ export function NavigationMenuDemo() {
   const logoSrc = useWhiteLogo ? whiteLogo : blueLogo;
   const headerBg = useWhiteLogo
     ? "bg-[#07518a]/95 backdrop-blur-md border-b border-[#064374] text-white  "
-    : "bg-white/90 backdrop-blur-md border-b border-gray-200";
+    : "bg-transparent  text-[#2469ad] ";
   const textColor = useWhiteLogo 
 
   const navItems = [
@@ -107,7 +107,7 @@ export function NavigationMenuDemo() {
                       className={[
                         navigationMenuTriggerStyle(),
                         textColor,
-                        "font-semibold text-[16px] tracking-wide transition-all duration-200 px-2 py-1.5 relative group border-0 bg-transparent ",
+                        "font-bold text-[20px] tracking-wide transition-all duration-200 px-2 py-1.5 relative group border-0 bg-transparent ",
                         "hover:text-yellow-400 hover:bg-transparent focus:bg-transparent active:bg-transparent ",
                       ].join(" ")}
                     >
