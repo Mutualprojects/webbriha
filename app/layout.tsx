@@ -1,6 +1,8 @@
 // app/layout.tsx
+import { NavigationMenuDemo } from '@/components/ui/NavigationMenuDemo'
 import './globals.css'
 import { Inter, Roboto } from 'next/font/google'
+import HoverFooter from '@/components/HoverFooter'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -23,7 +25,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${roboto.variable}`}>
       <body className="font-body ">
-        {children}
+      {/* Header */}
+        <NavigationMenuDemo />
+
+        {/* Main content in the middle */}
+        <main className="">
+          {children}
+        </main>
+
+        {/* Footer */}
+        <HoverFooter />
       </body>
     </html>
   )

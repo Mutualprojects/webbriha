@@ -4,13 +4,17 @@ import HomeSecondComp from "@/components/HomeSecondComp";
 import WhoWeAre from "@/components/WeAre";
 import Execuation from "@/components/Execuation";
 import BlogsInsights from "@/components/Blogs";
-import HoverFooter from "@/components/HoverFooter";
+
+import { HeroVideoDemo } from "@/components/demo";
+import SolarSection from "@/components/SolarSection";
+import solarimage from '../app/images/solar-panel-with-thumbs-up.png'
+
 
 export default function Home() {
   return (
     <div className="bg-white m-0 p-0">
       {/* ===== NAVBAR (fixed and over hero) ===== */}
-      <NavigationMenuDemo />
+   
 
       {/* ===== HERO SECTION ===== */}
       <section className="relative w-full h-screen overflow-hidden m-0 p-0">
@@ -34,13 +38,18 @@ export default function Home() {
         <section className="m-0 p-0 bg-white">
           <BlogsInsights />
         </section>
+  <section>
 
+<HeroVideoDemo/>
+
+        </section>
         {/* ===== CTA / Footer Section ===== */}
         <section className="">
-          <HoverFooter />
+          {/* <SolarOrbit/> */}
         </section>
+      
       </main>
-
+<SolarSection image="https://images.pexels.com/photos/9875410/pexels-photo-9875410.jpeg"/>
       {/* ===== SITE FOOTER ===== */}
     
     </div>

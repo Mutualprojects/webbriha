@@ -17,6 +17,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { label } from "framer-motion/client";
 
 export function NavigationMenuDemo() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -68,7 +69,9 @@ export function NavigationMenuDemo() {
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Solutions", href: "/solutions" },
+     {label:"Testimonials",href:"/testimonials"},
     { label: "Contact", href: "/contact" },
+   
   ];
 
   return (
