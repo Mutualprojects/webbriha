@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, cubicBezier } from "framer-motion";
 
-const videobg = "https://ik.imagekit.io/ynh4hdbml/Sequence%2001_2.mp4?updatedAt=1761973009939";
+const videobg = "https://ik.imagekit.io/ynh4hdbml/redpandacompress_Sequence%2001_1.mp4?updatedAt=1761976008187";
 
 /* ===== Motion Variants ===== */
 const containerVariants = {
