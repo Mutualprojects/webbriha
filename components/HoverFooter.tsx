@@ -12,121 +12,14 @@ import {
   Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { TextHoverEffect } from "./TextHoverEffect";
 
 /* ================================================
    Hover Footer Component (All-in-One Version)
    ================================================ */
 export default function HoverFooter() {
   /* ========= Text Hover Effect ========= */
-  const TextHoverEffect = ({
-    text,
-    duration,
-    className,
-  }: {
-    text: string;
-    duration?: number;
-    className?: string;
-  }) => {
-    const svgRef = useRef<SVGSVGElement>(null);
-    const [cursor, setCursor] = useState({ x: 0, y: 0 });
-    const [hovered, setHovered] = useState(false);
-    const [maskPosition, setMaskPosition] = useState({
-      cx: "50%",
-      cy: "50%",
-    });
-
-    useEffect(() => {
-      if (svgRef.current && cursor.x !== null && cursor.y !== null) {
-        const rect = svgRef.current.getBoundingClientRect();
-        const cx = ((cursor.x - rect.left) / rect.width) * 100;
-        const cy = ((cursor.y - rect.top) / rect.height) * 100;
-        setMaskPosition({ cx: `${cx}%`, cy: `${cy}%` });
-      }
-    }, [cursor]);
-
-    return (
-      <svg
-        ref={svgRef}
-        width="100%"
-        height="100%"
-        viewBox="0 0 300 250"
-        xmlns="http://www.w3.org/2000/svg"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-        onMouseMove={(e) => setCursor({ x: e.clientX, y: e.clientY })}
-        className={`select-none uppercase cursor-pointer ${className}`}
-      >
-        <defs>
-          <linearGradient id="textGradient" gradientUnits="userSpaceOnUse">
-            {hovered && (
-              <>
-                <stop offset="0%" stopColor="#facc15" />
-                <stop offset="25%" stopColor="#07518a" />
-                <stop offset="50%" stopColor="#22d3ee" />
-                <stop offset="75%" stopColor="#10b981" />
-                <stop offset="100%" stopColor="#8b5cf6" />
-              </>
-            )}
-          </linearGradient>
-
-          <motion.radialGradient
-            id="revealMask"
-            gradientUnits="userSpaceOnUse"
-            r="20%"
-            initial={{ cx: "50%", cy: "50%" }}
-            animate={maskPosition}
-            transition={{ duration: duration ?? 0.3, ease: "easeOut" }}
-          >
-            <stop offset="0%" stopColor="white" />
-            <stop offset="100%" stopColor="black" />
-          </motion.radialGradient>
-
-          <mask id="textMask">
-            <rect width="100%" height="100%" fill="url(#revealMask)" />
-          </mask>
-        </defs>
-
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          strokeWidth="0.3"
-          className="fill-transparent stroke-neutral-300 font-[helvetica] text-7xl font-bold"
-          style={{ opacity: hovered ? 0.5 : 0 }}
-        >
-          {text}
-        </text>
-
-        <motion.text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          strokeWidth="0.3"
-          className="fill-transparent stroke-[#07518a] font-[helvetica] text-7xl font-bold"
-          initial={{ strokeDashoffset: 1000, strokeDasharray: 1000 }}
-          animate={{ strokeDashoffset: 0 }}
-          transition={{ duration: 4, ease: "easeInOut" }}
-        >
-          {text}
-        </motion.text>
-
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          stroke="url(#textGradient)"
-          strokeWidth="0.3"
-          mask="url(#textMask)"
-          className="fill-transparent font-[helvetica] text-7xl font-bold"
-        >
-          {text}
-        </text>
-      </svg>
-    );
-  };
+ 
 
   /* ========= Background Gradient ========= */
   const FooterBackgroundGradient = () => (
@@ -256,7 +149,11 @@ export default function HoverFooter() {
         </div>
          {/* Hover text effect */}
       <div className="hidden lg:flex h-[30rem] -mt-52 -mb-36">
-        <TextHoverEffect text="SkyVolts" />
+        <TextHoverEffect
+        text="SKYVOLT"
+        duration={0.5}
+        className="w-[100%] sm:w-[60%] lg:w-[60%]"
+      />
       </div>
 
         <hr className="border-t border-gray-700 my-8" />

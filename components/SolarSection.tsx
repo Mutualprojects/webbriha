@@ -4,51 +4,46 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
-interface SolarSectionProps {
-  image: string;
-}
+const backgroundpower = "/freepik__background__80691.png"; // large background image
+const uppimage = "/solar-panel-with-thumbs-up.png"; // centered foreground image
 
-export default function SolarSection({ image }: SolarSectionProps) {
+export default function SolarSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Scroll progress for parallax effects
+  // Scroll-based parallax effect
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Smooth opposite-direction motion
-  const leftX = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);  // move right
-  const rightX = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]); // move left
+  const leftX = useTransform(scrollYProgress, [0, 1], ["0%", "6%"]);
+  const rightX = useTransform(scrollYProgress, [0, 1], ["0%", "-6%"]);
   const bgX = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden flex flex-col lg:flex-row items-center justify-between py-20 px-6 lg:px-20 bg-white"
+      className="relative flex flex-col lg:flex-row items-center justify-between overflow-hidden bg-white py-20 lg:py-0 "
     >
-      {/* ==== Animated Yellow Background Glow ==== */}
+      {/* ====== Soft Yellow Glow Background ====== */}
       <motion.div
         style={{ x: bgX }}
         animate={{ rotate: 360 }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "linear",
-        }}
-        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[#FCC012] opacity-20 blur-3xl"
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-20 blur-3xl z-0 "
       />
 
-      {/* ==== Left Text Section ==== */}
+      {/* ====== LEFT CONTENT ====== */}
       <motion.div
         style={{ x: leftX }}
-        className="relative z-10 flex-1 space-y-6 text-center lg:text-left"
+        className="relative z-10 flex-1 w-full px-6 lg:px-20 text-center lg:text-left space-y-6"
       >
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a6ab8]"
+          className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#fcc012]"
         >
           Powering a Sustainable Future with Solar Energy
         </motion.h2>
@@ -56,7 +51,8 @@ export default function SolarSection({ image }: SolarSectionProps) {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ delay: 0.15, duration: 0.8, ease: "easeOut" }}
           className="text-base sm:text-lg lg:text-xl text-[#07518a] leading-relaxed max-w-xl mx-auto lg:mx-0"
         >
           India’s solar revolution is illuminating millions of lives — driving
@@ -76,19 +72,42 @@ export default function SolarSection({ image }: SolarSectionProps) {
         </motion.button>
       </motion.div>
 
-      {/* ==== Right Image Section ==== */}
+      {/* ====== RIGHT VISUAL SECTION ====== */}
       <motion.div
         style={{ x: rightX }}
-        className="relative flex-1 mt-10 lg:mt-0 flex justify-center"
+        className="relative flex-1 w-full flex justify-center lg:justify-end mt-16 lg:mt-0"
       >
-        <div className="relative w-[300px] sm:w-[400px] lg:w-[500px] h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+        {/* === Background container === */}
+        <div className="relative w-full h-[120vh] sm:h-[130vh] lg:h-[150vh] flex items-center justify-center">
+          {/* Background Image */}
           <Image
-            src={image}
-            alt="Solar Energy"
+            src={backgroundpower}
+            alt="Solar background"
             fill
-            className="object-cover"
+            className="object-cover lg:object-contain opacity-50 blur-[0.5px]"
             priority
           />
+
+          {/* Overlay Gradient for depth */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/20 pointer-events-none" />
+
+          {/* Foreground main image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 40 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            whileHover={{ scale: 1.05 }}
+            className="relative z-10 w-[65%] sm:w-[50%] lg:w-[65%] aspect-square"
+          >
+            <Image
+              src={uppimage}
+              alt="Solar panel with thumbs up"
+              fill
+              className="object-contain drop-shadow-[0_10px_25px_rgba(10,106,184,0.3)]"
+              priority
+            />
+          </motion.div>
         </div>
       </motion.div>
     </section>

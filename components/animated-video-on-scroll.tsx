@@ -10,6 +10,7 @@ import {
   useScroll,
   useTransform,
   Transition,
+  MotionProps,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
@@ -170,24 +171,26 @@ HeroVideo.displayName = "HeroVideo";
 /* -------------------------------------------------------------------------- */
 /*                                 HeroButton                                 */
 /* -------------------------------------------------------------------------- */
-export const HeroButton = React.forwardRef<
-  HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement>
->(({ className, children, ...props }, ref) => (
-  <motion.button
-    ref={ref}
-    whileHover={{ scale: 1.05 }}
-    whileTap={{ scale: 0.97 }}
-    className={cn(
-      "group relative flex w-fit items-center gap-2 rounded-full border bg-gray-950/20 px-5 py-2 font-medium text-white shadow-[0px_4px_24px_#84cc16] transition-colors hover:bg-lime-500/10",
-      className
-    )}
-    {...props}
-  >
-    {children}
-    <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-  </motion.button>
-));
+type HeroButtonProps = MotionProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const HeroButton = React.forwardRef<HTMLButtonElement, HeroButtonProps>(
+  ({ className, children, ...props }, ref) => (
+    <motion.button
+      ref={ref}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.97 }}
+      className={cn(
+        "group relative flex w-fit items-center gap-2 rounded-full border bg-gray-950/20 px-5 py-2 font-medium text-white shadow-[0px_4px_24px_#84cc16] transition-colors hover:bg-lime-500/10",
+        className
+      )}
+      {...props}
+    >
+      {children}
+      <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+    </motion.button>
+  )
+);
 HeroButton.displayName = "HeroButton";
 
 /* -------------------------------------------------------------------------- */
@@ -224,7 +227,10 @@ export const ContainerInset = React.forwardRef<
     return (
       <motion.div
         ref={ref}
-        className={cn("relative pointer-events-none overflow-hidden", className)}
+        className={cn(
+          "relative pointer-events-none overflow-hidden",
+          className
+        )}
         style={{ clipPath, ...style }}
         {...props}
       />

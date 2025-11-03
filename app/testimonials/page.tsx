@@ -1,8 +1,15 @@
+
+import CircularTestimonials from '@/components/Circular-Testmonials'
+import TestimonialsSection from '@/components/TestimonialsSection'
 import React from 'react'
 
 function page() {
   return (
-    <div>page</div>
+    <div>
+
+
+    <TestimonialsSection/>
+    </div>
   )
 }
 

@@ -7,7 +7,12 @@ import BlogsInsights from "@/components/Blogs";
 
 import { HeroVideoDemo } from "@/components/demo";
 import SolarSection from "@/components/SolarSection";
-import solarimage from '../app/images/solar-panel-with-thumbs-up.png'
+import National from "@/components/National";
+import "primereact/resources/themes/lara-light-blue/theme.css"; // Theme (pick any)
+import "primereact/resources/primereact.min.css";               // Core CSS
+import "primeicons/primeicons.css";                             
+import CircularTestimonials from "@/components/Circular-Testmonials";
+import { CircularTestimonialsDemo } from "@/components/Testmonialdemo";
 
 
 export default function Home() {
@@ -47,9 +52,11 @@ export default function Home() {
         <section className="">
           {/* <SolarOrbit/> */}
         </section>
-      
+      <SolarSection/>
+      <National/>
+<CircularTestimonialsDemo/>
       </main>
-<SolarSection image="https://images.pexels.com/photos/9875410/pexels-photo-9875410.jpeg"/>
+
       {/* ===== SITE FOOTER ===== */}
     
     </div>
