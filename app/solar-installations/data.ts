@@ -1,21 +1,41 @@
-// src/data/solarInstallations/data.ts
-
 /* ========= Types ========= */
 export type Feature = {
   label: string;
 };
 
+export type DescriptionSections = {
+  overview: string;
+  whyChoose?: string;
+  applications?: string;
+  technicalHighlights?: string;
+  benefits?: string;
+  models?: string;
+  roi?: string;
+  supportAndSubsidy?: string;
+  sustainability?: string;
+};
+
 export type SolarInstallation = {
-  id: string;                 // stable key
-  name: string;               // display title
-  slug: string;               // url-safe slug
-  category: "Rooftop" | "Ground-mounted" | "Shed-mounted" | "Fencing" | "Street Lighting" | "Water Heating" | "Pumps" | "Wall-mounted" | "Floating";
-  summary: string;            // short paragraph for cards
-  features: Feature[];        // bullet points
-  tags: string[];             // for filtering/search
-  icon?: string;              // optional icon name/path
-  image?: string;             // optional hero image path
-  cta?: { label: string; href: string }; // optional CTA
+  id: string;
+  name: string;
+  slug: string;
+  category:
+    | "Rooftop"
+    | "Ground-mounted"
+    | "Shed-mounted"
+    | "Fencing"
+    | "Street Lighting"
+    | "Water Heating"
+    | "Pumps"
+    | "Wall-mounted"
+    | "Floating";
+  summary: string;
+  description?: DescriptionSections;
+  features: Feature[];
+  tags: string[];
+  icon?: string;
+  image?: string;
+  cta?: { label: string; href: string };
 };
 
 export type SolarInstallationsDataset = {
@@ -36,27 +56,46 @@ export type SolarInstallationsDataset = {
 export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
   hero: {
     title: "Our Solar Installation Systems",
-    subtitle:
-      "Power your world with Sky Volt Renewable Pvt. Ltd.",
+    subtitle: "Power Your World with Sky Volt Renewable Pvt. Ltd.",
     blurb:
       "A leading solar EPC company in India offering advanced, high-performance solar solutions for every need — from rooftop panels to floating solar systems. We deliver reliability, innovation, and sustainability in every project.",
   },
 
   items: [
+    /* ---------------------------------------------------------------------- */
+    /*  Rooftop Solar Systems                                                 */
+    /* ---------------------------------------------------------------------- */
     {
       id: "rooftop-solar",
       name: "Rooftop Solar Systems",
       slug: "rooftop-solar-systems",
       category: "Rooftop",
       summary:
-        "Turn your roof into a power source for homes, offices, and industries with high-efficiency rooftop solar.",
+        "Thousands of rooftops across India are transforming into clean power generators — and Sky Volt Renewable Pvt. Ltd. is leading this solar revolution.",
+      description: {
+        overview:
+          "Rooftop solar systems convert your roof into a renewable power source. Whether residential, commercial, or industrial, Sky Volt Renewable provides end-to-end EPC solutions using high-efficiency modules and smart inverters.",
+        whyChoose: `- Cut your electricity bills by up to 80%
+- Earn credits through net metering
+- Reduce carbon footprint and increase property value
+- Quick ROI with minimal maintenance`,
+        applications: `**Residential Systems**
+- Compact design for all roof types (RCC, tin, tile)
+- On-grid, off-grid, and hybrid models
+- 25-year panel performance warranty
+
+**Commercial & Industrial Systems**
+- Ideal for factories, hospitals, offices, and malls
+- Integration with battery storage and monitoring`,
+        supportAndSubsidy:
+          "Enjoy up to 40% MNRE subsidy with full documentation, DISCOM approvals, and net-metering setup handled by our team.",
+      },
       features: [
-        { label: "Save More, Earn More – Reduce electricity bills and gain long-term energy independence." },
-        { label: "Smart Energy Solutions – Ideal for residential, commercial, and industrial setups looking to switch to clean energy." },
-        { label: "Seamless Integration – Compatible with on-grid, off-grid, and hybrid systems." },
-        { label: "Quality You Can Trust – Premium modules and inverters from trusted manufacturers." },
-        { label: "Certified & Approved – Complies with MNRE standards and DISCOM net-metering policies." },
-        { label: "Trusted Solar Company in Hyderabad – End-to-end design, supply, and installation." },
+        { label: "Up to 80% reduction in electricity bills" },
+        { label: "MNRE-approved panels & smart inverters" },
+        { label: "Available in on-grid, off-grid, and hybrid variants" },
+        { label: "Long-term ROI with 25-year warranty" },
+        { label: "Ideal for homes, offices, and industries" },
       ],
       tags: ["rooftop", "on-grid", "off-grid", "hybrid", "MNRE", "net metering"],
       icon: "/icons/rooftop.svg",
@@ -64,120 +103,219 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       cta: { label: "Get Rooftop Quote", href: "/contact?type=rooftop" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Ground-Mounted Solar Systems                                          */
+    /* ---------------------------------------------------------------------- */
     {
       id: "ground-mounted",
       name: "Ground-Mounted Solar Systems",
       slug: "ground-mounted-solar-systems",
       category: "Ground-mounted",
       summary:
-        "Utility-scale and industrial ground plants engineered for maximum generation and long-term savings.",
+        "High-performance ground-mounted solar power plants built for industrial, institutional, and utility-scale projects.",
+      description: {
+        overview:
+          "Ground-mounted solar systems are ideal for large open areas such as industrial campuses, farmlands, and institutions.",
+        whyChoose: `- Maximum power output via optimized tilt angles
+- Galvanized steel mounting for durability
+- Scalable from kW to MW capacities
+- Quick ROI (2–5 years) with minimal maintenance`,
+        applications: `- Industrial plants, warehouses, and government facilities
+- Agricultural solar farms and utility-scale EPC projects`,
+        technicalHighlights: `- Tier-1 monocrystalline/polycrystalline panels
+- Custom tilt & orientation
+- Real-time performance monitoring`,
+        benefits: `- High ROI and consistent generation
+- Promotes ESG & renewable energy compliance`,
+      },
       features: [
-        { label: "Ideal for industrial facilities, farmlands, and institutional projects across India." },
-        { label: "Optimized Performance – Tilt-adjustable galvanized structures for maximum irradiance capture." },
-        { label: "Scalable & Reliable – Flexible capacities for utility and C&I EPC projects." },
-        { label: "Low Maintenance, High ROI – Minimized O&M with consistent output." },
-        { label: "Trusted Expertise – Precise execution and compliance at every stage." },
-        { label: "Complete EPC – From design to commissioning for solar farms and power plants." },
+        { label: "Optimized tilt structure for maximum output" },
+        { label: "Robust galvanized steel frames" },
+        { label: "Ideal for industrial and utility-scale solar farms" },
+        { label: "Scalable and customizable layouts" },
+        { label: "2–5 year ROI with low O&M" },
       ],
-      tags: ["ground-mounted", "utility-scale", "C&I", "tilt-structure", "EPC"],
+      tags: ["ground-mounted", "utility-scale", "industrial", "EPC"],
       icon: "/icons/ground.svg",
       image: "/images/solar/ground.jpg",
       cta: { label: "Plan a Ground Plant", href: "/contact?type=ground-mounted" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Shed-Mounted Solar Systems                                            */
+    /* ---------------------------------------------------------------------- */
     {
       id: "shed-mounted",
       name: "Shed-Mounted Solar Systems",
       slug: "shed-mounted-solar-systems",
       category: "Shed-mounted",
       summary:
-        "Convert factory sheds and warehouses into clean power generators while improving workspace comfort.",
+        "Dual-purpose solar setups that generate power and provide shade for industrial sheds, warehouses, and parking structures.",
+      description: {
+        overview:
+          "Shed-mounted solar systems are ideal for factories, warehouses, and parking sheds — providing both shade and clean energy.",
+        whyChoose: `- Dual purpose: shade + energy generation
+- Efficient use of existing shed space
+- Reduces electricity costs and internal heat
+- Long-lasting corrosion-resistant structures`,
+        applications: `- Industrial sheds, workshops, and service centers
+- Commercial parking areas and institutional complexes`,
+        technicalHighlights: `- Tier-1 solar panels and GI mounting structures
+- Compatible with on/off-grid and hybrid systems
+- Integrated drainage and cable management`,
+        roi: "Fast payback within 2–4 years with minimal maintenance.",
+      },
       features: [
-        { label: "Dual-Purpose – Shade + power generation for industrial sheds." },
-        { label: "Durable & Weatherproof – Corrosion-resistant mounting for long life." },
-        { label: "Energy Efficiency Boost – Reduces internal heat, improving conditions and savings." },
-        { label: "Seamless Integration – Connects to existing electrical infrastructure." },
-        { label: "Smart Investment – Reliable EPC for commercial and industrial users." },
+        { label: "Dual-purpose energy + shading design" },
+        { label: "Heavy-duty galvanized mounting" },
+        { label: "Compatible with all roof/shed types" },
+        { label: "Smart drainage and cable management" },
+        { label: "Fast ROI and subsidy eligible" },
       ],
-      tags: ["shed", "warehouse", "industrial", "retrofit"],
+      tags: ["shed", "industrial", "warehouse", "parking", "hybrid"],
       icon: "/icons/shed.svg",
       image: "/images/solar/shed.jpg",
       cta: { label: "Assess Your Shed", href: "/contact?type=shed-mounted" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Solar Fencing Systems                                                 */
+    /* ---------------------------------------------------------------------- */
     {
       id: "solar-fencing",
       name: "Solar Fencing Systems",
       slug: "solar-fencing-systems",
       category: "Fencing",
       summary:
-        "Solar-powered electric fencing for farms, factories, and residential compounds with robust battery backup.",
+        "Smart solar-powered fencing for farms, factories, and gated communities ensuring 24/7 protection without grid dependency.",
+      description: {
+        overview:
+          "Solar fencing provides a safe, efficient, and eco-friendly security solution powered by renewable energy.",
+        benefits: `- 24/7 security with built-in battery backup
+- Safe, non-lethal deterrence for animals/intruders
+- Minimal maintenance, zero electricity costs
+- Works in remote areas without grid supply`,
+        applications: `- Agricultural farms and warehouses
+- Industrial compounds and residential communities`,
+        technicalHighlights: `- Intelligent energizer unit with safety pulse control
+- Galvanized wire structure with solar + battery power
+- Complies with MNRE and electrical safety standards`,
+      },
       features: [
-        { label: "Reliable Solar Operation – Independent of grid with strong backup." },
-        { label: "24/7 Security – Minimal maintenance for continuous protection." },
-        { label: "Durable & Cost-Effective – Built for long-term performance." },
-        { label: "Easy & Safe Installation – Modern safety standards and quick setup." },
-        { label: "Custom Solutions – Tailored perimeter protection by property type." },
+        { label: "24/7 protection with solar power" },
+        { label: "Eco-friendly and cost-effective" },
+        { label: "Low maintenance and high reliability" },
+        { label: "Durable galvanized construction" },
+        { label: "Ideal for farms, factories, and institutions" },
       ],
-      tags: ["fencing", "security", "battery-backup", "farm", "industrial"],
+      tags: ["fencing", "security", "battery", "farm", "industrial"],
       icon: "/icons/fence.svg",
       image: "/images/solar/fencing.jpg",
-      cta: { label: "Secure Your Perimeter", href: "/contact?type=solar-fencing" },
+      cta: { label: "Secure Your Property", href: "/contact?type=solar-fencing" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Solar Street Lights                                                   */
+    /* ---------------------------------------------------------------------- */
     {
       id: "street-lights",
       name: "Solar Street Lights",
       slug: "solar-street-lights",
       category: "Street Lighting",
       summary:
-        "Smart, all-in-one solar street lighting with dusk-to-dawn automation for roads, parks, and campuses.",
+        "Intelligent, maintenance-free solar LED street lighting for roads, campuses, and parks with dusk-to-dawn operation.",
+      description: {
+        overview:
+          "Solar street lights combine LED technology and renewable energy for bright, reliable outdoor lighting.",
+        whyChoose: `- Automatic dusk-to-dawn sensors
+- Zero electricity cost, IP65 weatherproof design
+- Long-life LiFePO₄ batteries and high-lumen LEDs
+- Quick installation without trenching`,
+        applications: `- City roads, residential campuses, rural villages, and parks
+- Government and Smart City projects`,
+        technicalHighlights: `- Inbuilt lithium batteries and smart charge controllers
+- Multiple models: All-in-One, Semi-integrated, Standalone`,
+      },
       features: [
-        { label: "Automatic Operation – Dusk-to-dawn control for hassle-free lighting." },
-        { label: "Bright & Efficient – High-lumen LEDs for safety and visibility." },
-        { label: "All-in-One Design – Integrated panel, battery, and controller." },
-        { label: "Versatile Applications – Streets, townships, parks, campuses." },
-        { label: "Low Maintenance – Zero electricity cost with long service life." },
+        { label: "Automatic dusk-to-dawn operation" },
+        { label: "100% solar-powered, no grid dependency" },
+        { label: "Long-life lithium battery with LED fixtures" },
+        { label: "Zero maintenance with IP65 protection" },
+        { label: "Ideal for public, urban, and rural lighting" },
       ],
-      tags: ["street-light", "all-in-one", "LED", "public-infra"],
+      tags: ["street-light", "LED", "smart-city", "renewable"],
       icon: "/icons/streetlight.svg",
       image: "/images/solar/streetlight.jpg",
-      cta: { label: "Light Up Public Spaces", href: "/contact?type=street-lights" },
+      cta: { label: "Light Up Spaces", href: "/contact?type=street-lights" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Solar Water Heaters                                                   */
+    /* ---------------------------------------------------------------------- */
     {
       id: "solar-water-heaters",
       name: "Solar Water Heaters",
       slug: "solar-water-heaters",
       category: "Water Heating",
       summary:
-        "Efficient, low-maintenance solar hot-water systems for homes, hotels, hospitals, and hostels.",
+        "High-efficiency solar water heating solutions for homes, hospitals, hotels, and industrial use.",
+      description: {
+        overview:
+          "Our solar water heaters use FPC and ETC collector technology for reliable, eco-friendly heating.",
+        whyChoose: `- Save up to 90% on energy costs
+- Zero carbon emissions, low maintenance
+- Reliable supply even during power cuts`,
+        models: `- ETC (Evacuated Tube Collector) — ideal for cold/hard water
+- FPC (Flat Plate Collector) — for high-pressure usage`,
+        technicalHighlights: `- ISI-marked insulated tanks
+- GI/MS coated stands
+- Optional electric backup heating`,
+        benefits:
+          "Fast ROI (2–3 years) and long-term durability with MNRE-approved systems.",
+      },
       features: [
-        { label: "Efficient Solar Technology – Cuts electricity usage for heating." },
-        { label: "Model Options – FPC (Flat Plate) and ETC (Evacuated Tube) variants." },
-        { label: "Durable & Corrosion-Resistant – Built for long service." },
-        { label: "Year-Round Supply – Reliable hot water from renewable energy." },
-        { label: "Eco-Friendly & Cost-Effective – Sustainable comfort with savings." },
+        { label: "ETC & FPC models for all climates" },
+        { label: "Energy savings up to 90%" },
+        { label: "ISI-certified, corrosion-resistant tanks" },
+        { label: "Maintenance-free, 20+ years lifespan" },
+        { label: "Ideal for domestic and commercial usage" },
       ],
-      tags: ["water-heater", "FPC", "ETC", "domestic", "commercial"],
+      tags: ["water-heater", "ETC", "FPC", "residential", "commercial"],
       icon: "/icons/waterheater.svg",
       image: "/images/solar/waterheater.jpg",
       cta: { label: "Choose Your Heater", href: "/contact?type=water-heater" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Solar Pumpsets                                                        */
+    /* ---------------------------------------------------------------------- */
     {
       id: "solar-pumpsets",
       name: "Solar Pumpsets",
       slug: "solar-pumpsets",
       category: "Pumps",
       summary:
-        "Off-grid/remote irrigation made reliable and affordable for borewells, open wells, and drip systems.",
+        "Reliable solar-powered water pumps for agriculture, livestock, and industrial use — designed for off-grid and remote regions.",
+      description: {
+        overview: "Our solar pumpsets empower farmers with zero-fuel irrigation.",
+        whyChoose: `- Zero dependency on diesel or grid
+- Efficient irrigation in off-grid areas
+- Long service life and low maintenance`,
+        applications: `- Drip and sprinkler irrigation
+- Livestock watering
+- Rural drinking water schemes`,
+        technicalHighlights: `- Surface and submersible pump options
+- MPPT controllers with MNRE certification
+- Stainless-steel construction for longevity`,
+        benefits:
+          "Save up to 90% irrigation costs, 60% subsidy available under PM-KUSUM.",
+      },
       features: [
-        { label: "Versatile – Works for borewells, open wells, and micro-irrigation." },
-        { label: "Off-Grid Performance – Reliable in non-electrified regions." },
-        { label: "Energy & Cost Savings – Reduces diesel and grid dependence." },
-        { label: "Model Variants – AC and DC pumps; subsidy options for eligible users." },
-        { label: "Durable – Low maintenance for tough field conditions." },
+        { label: "Zero fuel dependency" },
+        { label: "Ideal for remote/off-grid irrigation" },
+        { label: "MNRE-certified components" },
+        { label: "Long life with minimal maintenance" },
+        { label: "Subsidy support for farmers" },
       ],
       tags: ["pumps", "agriculture", "off-grid", "subsidy"],
       icon: "/icons/pump.svg",
@@ -185,40 +323,66 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       cta: { label: "Upgrade Irrigation", href: "/contact?type=solar-pumpset" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Wall-Mounted Solar Systems                                            */
+    /* ---------------------------------------------------------------------- */
     {
       id: "wall-mounted",
       name: "Wall-Mounted Solar Systems",
       slug: "wall-mounted-solar-systems",
       category: "Wall-mounted",
       summary:
-        "Compact, space-saving solar for urban homes and offices—ideal for lighting, CCTV, and small loads.",
+        "Smart, space-saving solar systems that fit on walls and balconies for compact urban spaces.",
+      description: {
+        overview:
+          "Wall-mounted solar systems make solar viable for apartments and small offices.",
+        applications: `- Apartments, offices, and small shops
+- Institutional and public building facades`,
+        benefits:
+          "Stylish appearance, easy installation, minimal maintenance.",
+      },
       features: [
-        { label: "Space-Saving – Perfect where roof space is limited." },
-        { label: "Easy Installation – Lightweight; mounts on most walls." },
-        { label: "Reliable Supply – Powers lights, cameras, and small appliances." },
-        { label: "Customizable – Sized to residential or commercial needs." },
-        { label: "Sustainable & Smart – Clean energy in compact form." },
+        { label: "Perfect for limited roof areas" },
+        { label: "Elegant wall-mounted design" },
+        { label: "Durable, weather-resistant build" },
+        { label: "Easy plug-and-play connection" },
+        { label: "Eco-friendly energy solution" },
       ],
-      tags: ["wall-mounted", "compact", "urban", "space-saving"],
+      tags: ["wall-mounted", "urban", "compact"],
       icon: "/icons/wall.svg",
       image: "/images/solar/wall.jpg",
-      cta: { label: "Fit Solar on Walls", href: "/contact?type=wall-mounted" },
+      cta: { label: "Install Wall Solar", href: "/contact?type=wall-mounted" },
     },
 
+    /* ---------------------------------------------------------------------- */
+    /*  Floating Solar Systems                                                */
+    /* ---------------------------------------------------------------------- */
     {
       id: "floating-solar",
       name: "Floating Solar Systems",
       slug: "floating-solar-systems",
       category: "Floating",
       summary:
-        "High-output floating PV on lakes, reservoirs, and ponds—saves land and boosts performance.",
+        "Innovative floating solar panels that harness the sun over water bodies, saving land and improving efficiency.",
+      description: {
+        overview:
+          "Floating solar systems generate power on lakes, ponds, and reservoirs.",
+        benefits: `- Uses unused water surfaces, saving land
+- Water cooling enhances efficiency
+- Reduces evaporation, promoting conservation`,
+        applications: `- Dams, reservoirs, irrigation ponds
+- Industrial and rural electrification projects`,
+        technicalHighlights: `- UV-stabilized floats with corrosion-resistant frames
+- Secure anchoring and mooring systems`,
+        sustainability:
+          "Promotes land optimization, water conservation, and renewable growth under REI initiatives.",
+      },
       features: [
-        { label: "Efficient & Space-Saving – Generates power without using land." },
-        { label: "Improved Yield – Water cooling enhances panel efficiency." },
-        { label: "Reduces Evaporation – Supports water conservation." },
-        { label: "Durable & Corrosion-Resistant – High-strength floats and hardware." },
-        { label: "Ideal for Large Projects – Government and industrial deployments." },
-        { label: "End-to-End EPC – Floating PV solutions under Renewable Energy India initiatives." },
+        { label: "Efficient & space-saving energy on water" },
+        { label: "Natural cooling improves performance" },
+        { label: "Reduces evaporation & conserves water" },
+        { label: "Durable corrosion-proof materials" },
+        { label: "Ideal for dams, lakes, and industrial ponds" },
       ],
       tags: ["floating", "reservoir", "industrial", "REI"],
       icon: "/icons/floating.svg",
@@ -228,7 +392,8 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
   ],
 
   seo: {
-    metaTitle: "Sky Volt Renewable — Solar Installation Systems (Rooftop, Ground, Floating, Pumps, Street Lights)",
+    metaTitle:
+      "Sky Volt Renewable — Complete Solar Installation Solutions (Rooftop, Ground, Floating, Pumps, Street Lights, Water Heaters)",
     metaDescription:
       "Sky Volt Renewable Pvt. Ltd. offers rooftop, ground-mounted, shed, wall-mounted, floating solar, pumpsets, street lights, fencing, and solar water heaters across India with MNRE-compliant EPC services.",
     keywords: [

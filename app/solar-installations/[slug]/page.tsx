@@ -2,7 +2,31 @@ import { SOLAR_INSTALLATIONS_DATA } from "../data";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
+import ReactMarkdown from "react-markdown";
+function formatKey(key: string): string {
+  switch (key) {
+    case "overview":
+      return "Overview";
+    case "whyChoose":
+      return "Why Choose";
+    case "applications":
+      return "Applications";
+    case "technicalHighlights":
+      return "Technical Highlights";
+    case "roi":
+      return "ROI";
+    case "benefits":
+      return "Benefits";
+    case "models":
+      return "Models";
+    case "supportAndSubsidy":
+      return "Support & Subsidy";
+    case "sustainability":
+      return "Sustainability";
+    default:
+      return key.charAt(0).toUpperCase() + key.slice(1);
+  }
+}
 export default async function SolarInstallationPage({
   params,
 }: {
@@ -64,6 +88,64 @@ export default async function SolarInstallationPage({
           )}
         </div>
       </section>
+
+
+<section className="relative py-20 px-6 md:px-20 bg-gradient-to-b from-[#f9fbfd] to-white overflow-hidden">
+  {/* ===== Decorative Gradient Overlay ===== */}
+  <div className="absolute inset-0 bg-gradient-to-b from-[#2469ad0d] via-[#fcc0120d] to-transparent pointer-events-none" />
+
+  {installation.description && (
+    <section className="relative z-10">
+      {/* ===== Title ===== */}
+      <div className="text-center mb-16">
+        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#2469ad] to-[#fcc012] bg-clip-text text-transparent tracking-tight">
+          Description
+        </h1>
+        <p className="mt-3 text-gray-600 text-lg max-w-2xl mx-auto">
+          Explore a detailed breakdown of each aspect of this solar installation.
+        </p>
+        <div className="mt-5 h-1 w-28 mx-auto rounded-full bg-gradient-to-r from-[#2469ad] to-[#fcc012]" />
+      </div>
+
+      {/* ===== Description Cards ===== */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
+        {Object.entries(installation.description).map(([key, value], index) => (
+          <div
+            key={key}
+            className="group relative p-8 rounded-3xl bg-white/70 backdrop-blur-md shadow-sm hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-[#2469ad33] hover:-translate-y-1"
+          >
+            {/* Gradient Glow Accent */}
+            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-[#2469ad0a] via-transparent to-[#fcc0120f]" />
+
+            {/* Header */}
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 bg-gradient-to-r from-[#2469ad] to-[#fcc012] bg-clip-text text-transparent relative z-10">
+              {formatKey(key)}
+            </h2>
+
+            {/* Markdown Content */}
+            <div className="relative z-10 text-gray-700 leading-relaxed prose prose-lg max-w-none">
+              <ReactMarkdown>{String(value)}</ReactMarkdown>
+            </div>
+
+            {/* Index Badge */}
+            <div className="absolute top-4 right-4 text-xs font-semibold bg-gradient-to-r from-[#2469ad] to-[#fcc012] text-white px-3 py-1 rounded-full shadow-md">
+              {index + 1}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* ===== Decorative Footer Gradient Line ===== */}
+      <div className="mt-20 flex flex-col items-center">
+        <div className="h-1 w-44 rounded-full bg-gradient-to-r from-[#2469ad] to-[#fcc012]"></div>
+        <p className="mt-4 text-gray-500 text-sm">
+          Empowering progress through clean energy.
+        </p>
+      </div>
+    </section>
+  )}
+</section>
+
 
       {/* ===== FEATURES SECTION ===== */}
       <section className="relative w-full py-20 px-6 md:px-16 bg-white">
