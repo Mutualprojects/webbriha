@@ -7,66 +7,66 @@ import { TestimonialsColumn, type Testimonial } from "@/components/TestimonialsC
 const testimonials: Testimonial[] = [
   {
     text:
-      "This ERP revolutionized our operations, streamlining finance and inventory. The cloud-based platform keeps us productive, even remotely.",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
-    name: "Briana Patton",
-    role: "Operations Manager",
+      "sky volts handled our rooftop solar installation end-to-end. The team was punctual, explained the system clearly, and my power bills dropped noticeably in the first month.",
+    image: "/Ashok Reddy Sir-1.png",
+    name: "Ashok Reddy",
+    role: "Home Owner — Hyderabad",
   },
   {
     text:
-      "Implementing this ERP was smooth and quick. The customizable, user-friendly interface made team training effortless.",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
-    name: "Bilal Ahmed",
-    role: "IT Manager",
+      "We installed a 10 kW system for our shop in Secunderabad. The engineers optimized panels for maximum yield and completed installation within a day. Excellent workmanship.",
+    image: "/R Mallesh Goud-1.png",
+    name: "R. Mallesh Goud",
+    role: "Shop Owner — Secunderabad",
   },
   {
     text:
-      "The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.",
-    image: "https://randomuser.me/api/portraits/women/3.jpg",
-    name: "Saman Malik",
-    role: "Customer Support Lead",
+      "After switching to a solar + battery solution, our farmhouse near Nalgonda has reliable power even during outages. The after-sales support is fast and helpful.",
+    image: "/Shreedhar Reddy sir-1.png",
+    name: "Shreedhar Reddy",
+    role: "Farmer — Nalgonda",
   },
   {
     text:
-      "This ERP's seamless integration enhanced our business operations and efficiency. Highly recommend for its intuitive interface.",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
-    name: "Omar Raza",
-    role: "CEO",
+      "The Hyderabad team provided a site assessment and suggested the best orientation for panels. Installation was neat and the inverter setup is working flawlessly.",
+    image: "/Ashok Reddy Sir.png",
+    name: "Priya Kumar",
+    role: "Resident — Kukatpally, Hyderabad",
   },
   {
     text:
-      "Its robust features and quick support have transformed our workflow, making us significantly more efficient.",
-    image: "https://randomuser.me/api/portraits/women/5.jpg",
-    name: "Zainab Hussain",
-    role: "Project Manager",
+      "We upgraded our commercial building with a rooftop solar plant. The project management was professional and the ROI estimates matched reality.",
+    image: "/R Mallesh Goud.png",
+    name: "K. Ramesh",
+    role: "Facility Manager — Warangal",
   },
   {
     text:
-      "The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-    name: "Aliza Khan",
-    role: "Business Analyst",
+      "Their maintenance plan keeps our system performing well. Technicians visit promptly for cleaning and checks, which improved our monthly energy yield.",
+    image: "/Shreedhar Reddy sir.png",
+    name: "S. Anitha",
+    role: "Small Business Owner — Karimnagar",
   },
   {
     text:
-      "Our business functions improved with a user-friendly design and positive customer feedback.",
-    image: "https://randomuser.me/api/portraits/men/7.jpg",
-    name: "Farhan Siddiqui",
-    role: "Marketing Director",
+      "We appreciated the clear financing options and government subsidy guidance. Installation at our villa in Hyderabad was smooth and on schedule.",
+    image: "/Ashok Reddy Sir-1.png",
+    name: "M. Srinivas",
+    role: "Villa Owner — Hyderabad",
   },
   {
     text:
-      "They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.",
-    image: "https://randomuser.me/api/portraits/women/8.jpg",
-    name: "Sana Sheikh",
-    role: "Sales Manager",
+      "The team calibrated panel angles to maximize output throughout the year. Our factory's energy expenses reduced significantly after installation.",
+    image: "/R Mallesh Goud-1.png",
+    name: "R. Satyanarayana",
+    role: "Factory Owner — Medchal",
   },
   {
     text:
-      "Using this ERP, our online presence and conversions significantly improved, boosting business performance.",
-    image: "https://randomuser.me/api/portraits/men/9.jpg",
-    name: "Hassan Ali",
-    role: "E-commerce Manager",
+      "Responsive technicians and reliable performance — the battery backup saved critical operations during a recent outage. Highly recommended for rural homes.",
+    image: "/Shreedhar Reddy sir-1.png",
+    name: "Laxmi Devi",
+    role: "Home Owner — Nizamabad",
   },
 ];
 

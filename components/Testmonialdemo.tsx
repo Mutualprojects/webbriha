@@ -9,26 +9,27 @@ import { FaArrowRight } from "react-icons/fa";
 const testimonials = [
   {
     quote:
-      "I was impressed by the food! And I could really tell that they use high-quality ingredients. The staff was friendly and attentive. I'll definitely be back for more!",
-    name: "Tamar Mendelson",
-    designation: "Restaurant Critic",
-    src: "https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?q=80&w=1368&auto=format&fit=crop",
+      "The solar installation process was very smooth and professional. My electricity bill dropped significantly within the first month itself. Excellent service by the team!",
+    name: "Ashok Reddy",
+    designation: "Home Owner, Hyderabad",
+    src: "/Ashok Reddy Sir-1.png",
   },
   {
     quote:
-      "This place exceeded all expectations! The atmosphere is inviting, and the staff truly goes above and beyond. I'll keep returning for more exceptional dining experience.",
-    name: "Joe Charlescraft",
-    designation: "Frequent Visitor",
-    src: "https://images.unsplash.com/photo-1628749528992-f5702133b686?q=80&w=1368&auto=format&fit=crop",
+      "I opted for a rooftop solar system for my commercial building. Brihaspathi’s engineers explained everything clearly and completed the installation on time. Highly recommended!",
+    name: "R. Mallesh Goud",
+    designation: "Commercial Property Owner, Warangal",
+    src: "/R Mallesh Goud-1.png",
   },
   {
     quote:
-      "Shining Yam is a hidden gem! The impeccable service and overall attention to detail created a memorable experience. I highly recommend it!",
-    name: "Martina Edelweist",
-    designation: "Satisfied Customer",
-    src: "https://images.unsplash.com/photo-1524267213992-b76e8577d046?q=80&w=1368&auto=format&fit=crop",
+      "Their after-sales support is top-notch. Whenever I needed help, the team responded immediately. Very reliable solar service provider in Telangana.",
+    name: "Shreedhar Reddy",
+    designation: "Farmer, Nalgonda",
+    src: "/Shreedhar Reddy sir-1.png",
   },
 ];
+
 
 export const CircularTestimonialsDemo = () => {
   const router = useRouter();

@@ -1,3 +1,26 @@
+/* ========= Image Imports ========= */
+import FloatingImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Floating.png";
+import GroundMountedImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Ground Mounted.png";
+import RooftopImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Rooftop.png";
+import ShedMountedImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Shed Mounted.png";
+import SolarPumpImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Solar Pump.png";
+import StreetPoleImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Street Pole.png";
+import WallMountedImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Wall Mounted.png";
+import WaterHeaterImg from "@/app/images/Sky Volt Renewables Pvt Ltd/Solution Page/Waterheater.png";
+
+/* ========= BANNER IMAGE IMPORTS ========= */
+import BannerFencing from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Fencing.jpg";
+import BannerFloating from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Floating.jpg";
+import BannerGroundMounted from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Ground Mounted.jpg";
+import BannerRooftop from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Rooftop.jpg";
+import BannerShedMounted from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Shed Mounted.jpg";
+import BannerSolarPump from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Solar Pump.jpg";
+import BannerStreetLight from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Solar Street Light.jpg";
+import BannerWallMounted from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Wall Mounted.jpg";
+import BannerWaterHeater from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Water Heater.jpg";
+import BannerWaterproof from "@/app/images/Sky Volt Renewables Pvt Ltd/Solutions Banners/Waterproof.jpg";
+
+
 /* ========= Types ========= */
 export type Feature = {
   label: string;
@@ -34,7 +57,8 @@ export type SolarInstallation = {
   features: Feature[];
   tags: string[];
   icon?: string;
-  image?: string;
+  image?: any;
+    bannerImage?: any;  
   cta?: { label: string; href: string };
 };
 
@@ -70,6 +94,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Rooftop Solar Systems",
       slug: "rooftop-solar-systems",
       category: "Rooftop",
+        bannerImage: BannerRooftop,
       summary:
         "Thousands of rooftops across India are transforming into clean power generators — and Sky Volt Renewable Pvt. Ltd. is leading this solar revolution.",
       description: {
@@ -99,7 +124,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["rooftop", "on-grid", "off-grid", "hybrid", "MNRE", "net metering"],
       icon: "/icons/rooftop.svg",
-      image: "/images/solar/rooftop.jpg",
+      image: RooftopImg,
       cta: { label: "Get Rooftop Quote", href: "/contact?type=rooftop" },
     },
 
@@ -111,6 +136,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Ground-Mounted Solar Systems",
       slug: "ground-mounted-solar-systems",
       category: "Ground-mounted",
+        bannerImage:BannerGroundMounted,
       summary:
         "High-performance ground-mounted solar power plants built for industrial, institutional, and utility-scale projects.",
       description: {
@@ -137,7 +163,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["ground-mounted", "utility-scale", "industrial", "EPC"],
       icon: "/icons/ground.svg",
-      image: "/images/solar/ground.jpg",
+      image: GroundMountedImg,
       cta: { label: "Plan a Ground Plant", href: "/contact?type=ground-mounted" },
     },
 
@@ -149,6 +175,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Shed-Mounted Solar Systems",
       slug: "shed-mounted-solar-systems",
       category: "Shed-mounted",
+        bannerImage: BannerShedMounted ,
       summary:
         "Dual-purpose solar setups that generate power and provide shade for industrial sheds, warehouses, and parking structures.",
       description: {
@@ -174,18 +201,19 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["shed", "industrial", "warehouse", "parking", "hybrid"],
       icon: "/icons/shed.svg",
-      image: "/images/solar/shed.jpg",
+      image: ShedMountedImg,
       cta: { label: "Assess Your Shed", href: "/contact?type=shed-mounted" },
     },
 
     /* ---------------------------------------------------------------------- */
-    /*  Solar Fencing Systems                                                 */
+    /*  Solar Fencing Systems (NO IMAGE PROVIDED)                             */
     /* ---------------------------------------------------------------------- */
     {
       id: "solar-fencing",
       name: "Solar Fencing Systems",
       slug: "solar-fencing-systems",
       category: "Fencing",
+      bannerImage:BannerFencing,
       summary:
         "Smart solar-powered fencing for farms, factories, and gated communities ensuring 24/7 protection without grid dependency.",
       description: {
@@ -210,7 +238,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["fencing", "security", "battery", "farm", "industrial"],
       icon: "/icons/fence.svg",
-      image: "/images/solar/fencing.jpg",
+      image: "/images/solar/fencing.jpg", // You can replace this later
       cta: { label: "Secure Your Property", href: "/contact?type=solar-fencing" },
     },
 
@@ -222,6 +250,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Solar Street Lights",
       slug: "solar-street-lights",
       category: "Street Lighting",
+      bannerImage:BannerStreetLight,
       summary:
         "Intelligent, maintenance-free solar LED street lighting for roads, campuses, and parks with dusk-to-dawn operation.",
       description: {
@@ -245,7 +274,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["street-light", "LED", "smart-city", "renewable"],
       icon: "/icons/streetlight.svg",
-      image: "/images/solar/streetlight.jpg",
+      image: StreetPoleImg,
       cta: { label: "Light Up Spaces", href: "/contact?type=street-lights" },
     },
 
@@ -257,6 +286,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Solar Water Heaters",
       slug: "solar-water-heaters",
       category: "Water Heating",
+      bannerImage:BannerWaterHeater,
       summary:
         "High-efficiency solar water heating solutions for homes, hospitals, hotels, and industrial use.",
       description: {
@@ -282,7 +312,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["water-heater", "ETC", "FPC", "residential", "commercial"],
       icon: "/icons/waterheater.svg",
-      image: "/images/solar/waterheater.jpg",
+      image: WaterHeaterImg,
       cta: { label: "Choose Your Heater", href: "/contact?type=water-heater" },
     },
 
@@ -294,6 +324,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Solar Pumpsets",
       slug: "solar-pumpsets",
       category: "Pumps",
+      bannerImage:BannerSolarPump,
       summary:
         "Reliable solar-powered water pumps for agriculture, livestock, and industrial use — designed for off-grid and remote regions.",
       description: {
@@ -319,7 +350,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["pumps", "agriculture", "off-grid", "subsidy"],
       icon: "/icons/pump.svg",
-      image: "/images/solar/pump.jpg",
+      image: SolarPumpImg,
       cta: { label: "Upgrade Irrigation", href: "/contact?type=solar-pumpset" },
     },
 
@@ -331,6 +362,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Wall-Mounted Solar Systems",
       slug: "wall-mounted-solar-systems",
       category: "Wall-mounted",
+      bannerImage:BannerWallMounted,
       summary:
         "Smart, space-saving solar systems that fit on walls and balconies for compact urban spaces.",
       description: {
@@ -350,7 +382,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["wall-mounted", "urban", "compact"],
       icon: "/icons/wall.svg",
-      image: "/images/solar/wall.jpg",
+      image: WallMountedImg,
       cta: { label: "Install Wall Solar", href: "/contact?type=wall-mounted" },
     },
 
@@ -362,6 +394,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       name: "Floating Solar Systems",
       slug: "floating-solar-systems",
       category: "Floating",
+       bannerImage:BannerFloating,
       summary:
         "Innovative floating solar panels that harness the sun over water bodies, saving land and improving efficiency.",
       description: {
@@ -386,7 +419,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["floating", "reservoir", "industrial", "REI"],
       icon: "/icons/floating.svg",
-      image: "/images/solar/floating.jpg",
+      image: FloatingImg,
       cta: { label: "Explore Floating PV", href: "/contact?type=floating-solar" },
     },
   ],
