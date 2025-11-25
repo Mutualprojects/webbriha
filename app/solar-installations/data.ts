@@ -238,7 +238,7 @@ export const SOLAR_INSTALLATIONS_DATA: SolarInstallationsDataset = {
       ],
       tags: ["fencing", "security", "battery", "farm", "industrial"],
       icon: "/icons/fence.svg",
-      image: "/images/solar/fencing.jpg", // You can replace this later
+      image: "https://next2sun.com/wp-content/uploads/2022/06/Solarzaun-Landwirtschaft.jpg", // You can replace this later
       cta: { label: "Secure Your Property", href: "/contact?type=solar-fencing" },
     },
 

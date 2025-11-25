@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Button } from "primereact/button";
 import HeaderHero from "@/components/ui/HeaderHero";
 
+
+const abot_image='/About page.jpg'
 const PRIMARY = "#2469ad"; // blue
 const ACCENT = "#fcc012";  // gold
 
@@ -120,7 +122,7 @@ export default function AboutPage() {
             </div>
 
             <motion.img
-              src="https://www.shutterstock.com/image-vector/solar-panel-battery-storage-collector-260nw-2272115157.jpg"
+              src={abot_image}
               alt="Sustainability"
               className="rounded-2xl shadow-2xl w-full h-[400px] object-cover border"
               style={{ borderColor: `${PRIMARY}22` }}

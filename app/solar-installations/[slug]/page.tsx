@@ -74,14 +74,7 @@ export default async function SolarInstallationPage({
               {installation.summary}
             </p>
 
-            {installation.cta && (
-              <Link
-                href={installation.cta.href}
-                className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-7 py-3 rounded-full font-semibold mt-4 hover:scale-105 transition-transform duration-300 shadow-xl"
-              >
-                {installation.cta.label}
-              </Link>
-            )}
+        
           </div>
 
           {/* Right Image */}
@@ -107,7 +100,7 @@ export default async function SolarInstallationPage({
         {installation.description && (
           <section className="relative z-10">
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-[#2469ad] to-[#fcc012] bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-extrabold  text-[#fcc012] bg-clip-text ">
                 Description
               </h1>
               <p className="mt-3 text-gray-600 text-lg max-w-2xl mx-auto">
