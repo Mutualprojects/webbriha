@@ -6,7 +6,7 @@ import { Button } from "primereact/button";
 import HeaderHero from "@/components/ui/HeaderHero";
 
 
-const abot_image='/About page.jpg'
+const abot_image='public/About page.jpg'
 const PRIMARY = "#2469ad"; // blue
 const ACCENT = "#fcc012";  // gold
 
