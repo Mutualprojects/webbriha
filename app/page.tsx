@@ -41,7 +41,7 @@ export default function Home() {
         </section>
 
         <section className="m-0 p-0 bg-white">
-          <BlogsInsights />
+          {/* <BlogsInsights /> */}
         </section>
   <section>
 

@@ -128,7 +128,7 @@ export default function HeaderHero() {
                  rounded-2xl overflow-hidden border border-green-700/20"
     >
       <motion.img
-        src="https://images.pexels.com/photos/8853506/pexels-photo-8853506.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        src="https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/Eco-friendly%20solutions%20for%20your%20future.png"
         alt="Eco energy panels"
         className="w-full h-full object-cover rounded-2xl"
         initial={{ opacity: 0, scale: 0.95 }}

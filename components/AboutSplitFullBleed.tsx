@@ -79,26 +79,14 @@ export default function AboutSplitFullBleed({
           style={{ x: imageX, opacity: imageOpacity }}
           className="flex justify-center w-full h-[40vh] sm:h-[48vh] md:h-[55vh] lg:h-[65vh]"
         >
-          <motion.div
-            whileHover={{
-              y: -10,
-              scale: 1.03,
-              rotate: 0.5,
-              boxShadow: "0 15px 40px rgba(0,0,0,0.15)",
-            }}
-            transition={{ type: "spring", stiffness: 200, damping: 15 }}
-            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg h-full rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-md"
-          >
-            <Image
-              src={image}
+          <Image
+              src="https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/Powering%20India_s%20Clean%20Energy%20Future.png"
               alt={alt}
               fill
               priority
-              placeholder={typeof image === "string" ? undefined : "blur"}
+          
               className="object-cover rounded-3xl"
             />
-            <div className="absolute inset-0 ring-1 ring-black/5" />
-          </motion.div>
         </motion.div>
 
         {/* === Right: Text Content (Center ➜ Right Motion) === */}

@@ -131,7 +131,7 @@ export default function Execution() {
           className="relative w-full h-[350px] sm:h-[450px] lg:h-[550px] rounded-2xl overflow-hidden shadow-lg"
         >
           <Image
-            src="https://tse1.mm.bing.net/th/id/OIP.zje_pWDcdGt_-aGUBUWMPgHaE8?pid=Api&P=0&h=180"
+            src="https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/Seamless%20shift%20to%20renewable%20power.png"
             alt="Solar Execution"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"

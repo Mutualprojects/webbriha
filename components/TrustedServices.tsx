@@ -1,22 +1,53 @@
 "use client";
 
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { motion, cubicBezier } from "framer-motion";
 
-// ✅ Type updated to allow both imported and URL images
 interface Service {
   title: string;
-  description: string;
-  image: string | StaticImageData;
+  description: string[];
+  media: string; // image or video URL
+  isVideo?: boolean;
 }
 
-interface Props {
-  services: Service[];
-  title?: string;
-}
+const SERVICES: Service[] = [
 
-// ✅ TS-safe easing variant
+   {
+    title: "Solar EPC Services",
+    media: "https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/EPC.png",
+    description: [
+      "We provide complete EPC solutions ensuring seamless execution from concept to commissioning.",
+      "System design & consultation with site assessment and load analysis.",
+      "Equipment procurement using MNRE-approved high-quality components.",
+      "Expert installation following strict safety and quality standards.",
+    ],
+  },
+  {
+    title: "After-Sales Service",
+    media: "https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/After%20Sales.png",
+    description: [
+      "Our commitment continues long after installation.",
+      "Comprehensive product and installation warranties.",
+      "Preventive maintenance and performance monitoring.",
+      "Quick technical support and service assistance.",
+    ],
+  },
+ 
+  {
+    title: "Financing & Administrative Support",
+    media: "https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/Financial%20&%20Adminstrative.png",
+
+    description: [
+      "Flexible financing and administrative assistance for easier solar investment.",
+      "Guidance on government subsidies and rebate programs.",
+      "Support for DISCOM approvals and net metering setup.",
+      "Easy EMI and loan options to make solar affordable.",
+    ],
+  },
+];
+
+// TS-safe animation
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   show: (i: number) => ({
@@ -25,20 +56,14 @@ const fadeUp = {
     transition: {
       delay: i * 0.15,
       duration: 0.6,
-      ease: cubicBezier(0.16, 1, 0.3, 1), // ✅ replaces "easeOut"
+      ease: cubicBezier(0.16, 1, 0.3, 1),
     },
   }),
 };
 
-export default function TrustedServices({
-  services,
-  title = "Trusted Sustainable Energy Services",
-}: Props) {
-  if (!services || !Array.isArray(services)) return null;
-
+export default function TrustedServices() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-20 md:py-28 text-center bg-[#f5fbf7]">
-      {/* ===== Title ===== */}
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -46,12 +71,11 @@ export default function TrustedServices({
         viewport={{ once: true }}
         className="text-3xl md:text-4xl font-bold mb-14 text-gray-900"
       >
-        {title}
+        Trusted Sustainable Energy Services
       </motion.h2>
 
-      {/* ===== Services Grid ===== */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service, i) => (
+        {SERVICES.map((service, i) => (
           <motion.div
             key={service.title + i}
             custom={i}
@@ -69,25 +93,37 @@ export default function TrustedServices({
             transition={{ type: "spring", stiffness: 200 }}
             className="bg-white rounded-2xl shadow-md overflow-hidden cursor-pointer transform-gpu hover:shadow-xl transition-all"
           >
-            {/* ===== Image ===== */}
+            {/* Media Section */}
             <div className="relative w-full h-52 sm:h-56 overflow-hidden">
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-500 hover:scale-110"
-              />
+              {service.isVideo ? (
+                <video
+                  src={service.media}
+                  className="object-cover w-full h-full"
+                  autoPlay
+                  muted
+                  loop
+                />
+              ) : (
+                <Image
+                  src={service.media}
+                  alt={service.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                />
+              )}
             </div>
 
-            {/* ===== Text ===== */}
-            <div className="p-6 sm:p-8">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            {/* Text Section */}
+            <div className="p-6 sm:p-8 text-left">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-base leading-relaxed">
-                {service.description}
-              </p>
+              <ul className="text-gray-600 space-y-2 text-base leading-relaxed list-disc ml-5">
+                {service.description.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
             </div>
           </motion.div>
         ))}

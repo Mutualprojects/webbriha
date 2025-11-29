@@ -3,7 +3,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "primereact/button";
-import HeaderHero from "@/components/ui/HeaderHero";
+
+import Aboutheader from "@/components/ui/Aboutheader";
 
 
 const abot_image='public/About page.jpg'
@@ -14,7 +15,7 @@ export default function AboutPage() {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* ===== HERO (your existing component) ===== */}
-      <HeaderHero />
+      <Aboutheader/>
 
       {/* ===== OUR STORY SECTION (brand themed) ===== */}
       <section className="relative py-24 px-6 md:px-20 bg-gradient-to-b from-white via-[#f8fafc] to-[#eef4fb] overflow-hidden">
@@ -122,7 +123,7 @@ export default function AboutPage() {
             </div>
 
             <motion.img
-              src={abot_image}
+              src='https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/About%20page.jpg'
               alt="Sustainability"
               className="rounded-2xl shadow-2xl w-full h-[400px] object-cover border"
               style={{ borderColor: `${PRIMARY}22` }}
