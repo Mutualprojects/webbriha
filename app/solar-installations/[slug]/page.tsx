@@ -101,7 +101,7 @@ export default async function SolarInstallationPage({
           <section className="relative z-10">
             <div className="text-center mb-16">
               <h1 className="text-4xl md:text-5xl font-extrabold  text-[#fcc012] bg-clip-text ">
-                Description
+                Features
               </h1>
               <p className="mt-3 text-gray-600 text-lg max-w-2xl mx-auto">
                 Explore a detailed breakdown of each aspect of this solar
