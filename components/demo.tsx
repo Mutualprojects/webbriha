@@ -18,10 +18,10 @@ import { ContainerAnimated,
         >
       <ContainerAnimated className="space-y-4 text-center">
   <h1 className="text-5xl font-semibold tracking-tighter md:text-6xl text-[#FCC012]">
-    Empowering India with Smart Solar Solutions ☀️
+    Empowering India with Smart Solar Solutions 
   </h1>
 
-<p className="mx-auto max-w-[55ch] text-lg opacity-90 leading-relaxed text-black">
+<p className="mx-auto max-w-[55ch] text-lg opacity-90 leading-relaxed text-white">
   <span className="font-semibold text-[#FCC012]">SkyVolt</span > delivers next-generation
   solar energy systems that inspire sustainability and power a brighter tomorrow.
 </p>
