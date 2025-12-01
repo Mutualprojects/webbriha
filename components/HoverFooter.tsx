@@ -98,7 +98,13 @@ export default function HoverFooter() {
             <div className="flex items-center space-x-2">
               {/* <span className="text-[#facc15] text-3xl font-extrabold"></span> */}
               <span className="text-[#07518a] text-3xl font-bold">
-                <Image src={skyvoltfooter_logo}/>
+             <Image
+  src={skyvoltfooter_logo}
+  alt="SkyVolt Logo"
+  width={200}
+  height={80}
+  className="object-contain"
+/>
               </span>
             </div>
             <p className="text-sm leading-relaxed text-[#07518a]">
