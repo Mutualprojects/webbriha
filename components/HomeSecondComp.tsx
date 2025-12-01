@@ -45,7 +45,7 @@ export default function HomeSecondComp() {
   return (
     <div className="bg-[#f5fbf7] text-gray-800 w-full overflow-hidden">
       <AboutSplitFullBleed image={india} about={aboutSection} />
-      <TrustedServices services={trustedServices} />
+      <TrustedServices  />
     </div>
   );
 }
