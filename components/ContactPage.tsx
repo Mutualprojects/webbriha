@@ -34,7 +34,7 @@ export default function ContactPage() {
           className="flex flex-col justify-center"
           variants={containerVariants}
         >
-          <h1 className="text-5xl font-bold text-gray-900 leading-tight">
+          <h1 className="text-5xl font-bold text-[#2469AD] leading-tight">
             Contact <span className="text-[#FCC012]">Us</span>
           </h1>
           <p className="mt-4 text-lg text-gray-600">
