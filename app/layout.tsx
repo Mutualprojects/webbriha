@@ -33,7 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${inter.variable} ${manrope.variable} scroll-smooth antialiased`}
     >
-      <body
+      
+        <body
         className="font-body text-gray-900 bg-white selection:bg-[#FCC012]/30 selection:text-[#0a6ab8] transition-colors duration-300"
       >
         {/* ===== Header Navigation ===== */}

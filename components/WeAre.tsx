@@ -3,6 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import { motion, cubicBezier } from "framer-motion";
+import value1 from '../app/images/2.png'
+import value2 from '../app/images/3.png'
+import value3 from '../app/images/4.png'
 
 // ====== Motion Variants ======
 const fadeInUp = {
@@ -90,7 +93,7 @@ export default function WhoWeAre() {
           >
             <div className="relative w-20 h-20">
               <Image
-                src="https://content.presspage.com/uploads/1369/cae8f08d-2d20-4ab3-b51d-b27dcd1471bb/1920_martinablog.jpg?10000"
+                src={value1}
                 alt="Sustainability"
                 fill
                 className="object-cover rounded-full"
@@ -115,14 +118,14 @@ export default function WhoWeAre() {
           >
             <div className="relative w-20 h-20">
               <Image
-                src="https://png.pngtree.com/png-clipart/20231208/original/pngtree-customer-centric-business-concept-stamp-grunge-photo-png-image_13794443.png"
+                src={value2}
                 alt="Customer-Centric"
                 fill
                 className="object-cover rounded-full"
               />
             </div>
             <h3 className="text-xl font-semibold text-gray-800">
-              Customer-Centric Approach
+              Customer-Centric 
             </h3>
             <p className="text-gray-600">
               Putting client needs and satisfaction at the heart of every
@@ -140,7 +143,7 @@ export default function WhoWeAre() {
           >
             <div className="relative w-20 h-20">
               <Image
-                src="https://img.favpng.com/12/11/15/computer-icons-partnership-icon-design-business-png-favpng-kTZ4vFtEeUQrqjbNyTGjJCPiW.jpg"
+                src={value3}
                 alt="Integrity"
                 fill
                 className="object-cover rounded-full"

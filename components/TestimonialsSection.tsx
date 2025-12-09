@@ -15,9 +15,24 @@ import MalleshGoud1 from "@/app/images/R Mallesh Goud-1.png";
 import MalleshGoud2 from "@/app/images/R Mallesh Goud.png";
 import Shreedhar1 from "@/app/images/Shreedhar Reddy sir-1.png";
 import Shreedhar2 from "@/app/images/Shreedhar Reddy sir.png";
+import Anuradha from '@/app/images/Screenshot 2025-12-09 143046 (1).png'
 
 // ====== Testimonials Data ======
 const testimonials: Testimonial[] = [
+   {
+    text:
+      "The service was very good. Whenever we needed help, the team responded quickly. A reliable solar provider — we are very happy with the installation at our home in Shamshabad.",
+    image: Anuradha,
+    name: "Architect’s Wife, Shamshabad",
+    role: "Home Owner — Hyderabad",
+  },
+    {
+    text:
+      "Sky Volts handled our rooftop solar installation end-to-end. The team was punctual, explained the system clearly, and my power bills dropped noticeably in the first month.",
+    image: AshokReddy1,
+    name: "Ashok Reddy",
+    role: "Home Owner — Hyderabad",
+  },
   {
     text:
       "Sky Volts handled our rooftop solar installation end-to-end. The team was punctual, explained the system clearly, and my power bills dropped noticeably in the first month.",

@@ -1,9 +1,10 @@
-import React from 'react'
+"use client";
 
-function page() {
-  return (
-    <div>page</div>
-  )
+import { useParams } from "next/navigation";
+import InstallationDetail from "@/components/InstallationDetail";
+
+export default function Page() {
+  const { slug } = useParams();
+
+  return <InstallationDetail slug={String(slug)} />;
 }
-
-export default page

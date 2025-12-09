@@ -6,28 +6,46 @@ import { useRouter } from "next/navigation";
 import { CircularTestimonials } from "@/components/Circular-Testmonials";
 import { FaArrowRight } from "react-icons/fa";
 
+
+import AshokReddy1 from "@/app/images/Ashok Reddy Sir-1.png";
+import AshokReddy2 from "@/app/images/Ashok Reddy Sir.png";
+import MalleshGoud1 from "@/app/images/R Mallesh Goud-1.png";
+import MalleshGoud2 from "@/app/images/R Mallesh Goud.png";
+import Shreedhar1 from "@/app/images/Shreedhar Reddy sir-1.png";
+import Shreedhar2 from "@/app/images/Screenshot 2025-12-09 143046 (1).png";
+
+
 const testimonials = [
+    {
+  quote:
+    "The service was very good. Whenever we needed help, the team responded quickly. A reliable solar provider — we are very happy with the installation at our home in Shamshabad.",
+  name: "Anuradha",
+  designation: "Architect’s Wife, Shamshabad",
+  src: Shreedhar2.src,
+},
+
   {
     quote:
       "The solar installation process was very smooth and professional. My electricity bill dropped significantly within the first month itself. Excellent service by the team!",
     name: "Ashok Reddy",
     designation: "Home Owner, Hyderabad",
-    src: "/Ashok Reddy Sir-1.png",
+    src: AshokReddy1.src,
   },
   {
     quote:
       "I opted for a rooftop solar system for my commercial building. Brihaspathi’s engineers explained everything clearly and completed the installation on time. Highly recommended!",
     name: "R. Mallesh Goud",
     designation: "Commercial Property Owner, Warangal",
-    src: "/R Mallesh Goud-1.png",
+    src: MalleshGoud1.src,
   },
   {
     quote:
       "Their after-sales support is top-notch. Whenever I needed help, the team responded immediately. Very reliable solar service provider in Telangana.",
     name: "Shreedhar Reddy",
     designation: "Farmer, Nalgonda",
-    src: "/Shreedhar Reddy sir-1.png",
+    src: Shreedhar1.src,
   },
+
 ];
 
 

@@ -3,6 +3,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import mainimageabputysplit from '../app/images/WhatsApp Image 2025-12-09 at 2.50.23 PM.jpeg'
+import { useRouter } from "next/navigation";
 
 /* ===== Interfaces ===== */
 interface AboutData {
@@ -18,6 +20,7 @@ interface AboutProps {
 
 /* ===== Component ===== */
 export default function AboutSplitFullBleed({
+
   image,
   about,
   alt = "About section image",
@@ -31,7 +34,7 @@ export default function AboutSplitFullBleed({
   });
 
   const [viewportWidth, setViewportWidth] = useState(1024);
-
+   const router=useRouter()
   // Detect screen width to adjust animation distances
   useEffect(() => {
     const updateWidth = () => setViewportWidth(window.innerWidth);
@@ -80,7 +83,7 @@ export default function AboutSplitFullBleed({
           className="flex justify-center w-full h-[40vh] sm:h-[48vh] md:h-[55vh] lg:h-[65vh]"
         >
           <Image
-              src="https://ik.imagekit.io/tsuss6ulm/Sky%20volt%20renewables%20Pvt.Ltd/Powering%20India_s%20Clean%20Energy%20Future.png"
+              src={mainimageabputysplit}
               alt={alt}
               fill
               priority
@@ -122,9 +125,9 @@ export default function AboutSplitFullBleed({
                 boxShadow: "0px 10px 25px rgba(14,165,233,0.3)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="mt-8 self-center md:self-start inline-flex items-center px-6 sm:px-8 py-3 rounded-xl bg-sky-600 text-white font-semibold shadow-md hover:bg-sky-700 transition-all text-sm sm:text-base"
-            >
-              Learn More
+              className="mt-8 self-center md:self-start inline-flex items-center px-6 sm:px-8 py-3 rounded-xl bg-sky-600 text-white font-semibold shadow-md hover:bg-sky-700 transition-all text-sm sm:text-base cursor-pointer"
+         onClick={() => router.push("/solar-installations")} >
+              View More
             </motion.button>
           </motion.div>
         </motion.div>
